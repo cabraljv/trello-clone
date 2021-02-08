@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { Scrollbars } from 'react-custom-scrollbars';
 import List from '../List';
 import { Container } from './styles';
 import api_data from '../../services/data';
@@ -55,32 +56,34 @@ const Board: React.FC = () => {
   );
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <Container>
-        <Droppable droppableId="board" type="COLUMN" direction="horizontal">
-          {(provided) => (
-            <div
-              className="lists"
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-            >
-              {data.map((item, index) => (
-                <List
-                  key={item.id}
-                  name={item.name}
-                  cards={item.cards}
-                  groupIndex={index}
-                />
-              ))}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
+      <Scrollbars autoHeight autoHeightMin={window.innerHeight - 50}>
+        <Container>
+          <Droppable droppableId="board" type="COLUMN" direction="horizontal">
+            {(provided) => (
+              <div
+                className="lists"
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+                {data.map((item, index) => (
+                  <List
+                    key={item.id}
+                    name={item.name}
+                    cards={item.cards}
+                    groupIndex={index}
+                  />
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
 
-        <button className="add-list" type="button">
-          <FiPlus size={20} />
-          <p>Criar outra lista</p>
-        </button>
-      </Container>
+          <button className="add-list" type="button">
+            <FiPlus size={20} />
+            <p>Criar outra lista</p>
+          </button>
+        </Container>
+      </Scrollbars>
     </DragDropContext>
   );
 };

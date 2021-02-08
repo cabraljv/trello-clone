@@ -4,12 +4,13 @@ import theme from '../../styles/themes';
 export const Container = styled.div`
   display: flex;
   width: 100%;
+  padding: 10px 30px;
   color: ${theme.secondary};
 
   button.add-list {
     display: flex;
     margin: 10px 5px;
-    width: 272px;
+    min-width: 272px;
     height: 40px;
     align-items: center;
     padding: 0 10px;
