@@ -35,6 +35,7 @@ export const Container = styled.div`
   }
   footer {
     margin-top: auto;
+    padding-top: 10px;
     button.add-card {
       border-radius: 3px;
       display: flex;

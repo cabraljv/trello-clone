@@ -25,4 +25,8 @@ export const Container = styled.div`
   button.add-list:hover {
     background: rgba(255, 255, 255, 0.35);
   }
+  div.lists {
+    display: flex;
+    height: 100%;
+  }
 `;
